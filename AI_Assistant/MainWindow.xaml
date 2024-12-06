@@ -3,10 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AI_Assistant"
+        xmlns:local="clr-namespace:AI_Assistant.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AI Assistant" Height="350" Width="525">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Add Task" Command="{Binding AddCommand}" Width="100" Margin="5"/>
+            <Button Content="Remove Task" Command="{Binding RemoveCommand}" Width="100" Margin="5"/>
+            <Button Content="Mark Completed" Command="{Binding MarkAsCompletedCommand}" Width="100" Margin="5"/>
+        </StackPanel>
+        <ListBox Grid.Row="1" ItemsSource="{Binding ToDoItems}" Margin="10" DisplayMemberPath="Title" SelectedItem="{Binding SelectedItem}"/>
     </Grid>
 </Window>

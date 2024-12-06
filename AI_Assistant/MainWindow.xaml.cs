@@ -19,6 +19,7 @@ namespace AI_Assistant
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ViewModels.MainViewModel();
         }
     }
 }
